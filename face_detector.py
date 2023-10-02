@@ -27,10 +27,13 @@ def detect_and_crop_faces(input_dir, output_dir):
                     # Convert cropped face to grayscale
                     gray_face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
 
+                    # Resize the cropped face to 48x48 pixels
+                    resized_face = cv2.resize(gray_face, (48, 48))
+
                     # Save the cropped face in grayscale
                     output_path = os.path.join(output_dir, root, f'{filename.split(".")[0]}_face{i}.jpg')
                     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-                    cv2.imwrite(output_path, gray_face)
+                    cv2.imwrite(output_path, resized_face)
 
 
 input_dir = './train'
