@@ -21,8 +21,7 @@ def detect_and_crop_faces(input_dir, output_dir):
 
                 # Loop through all detected faces
                 for i, (x, y, w, h) in enumerate(faces):
-                    # Draw rectangle around the face and crop the face
-                    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255), 2)
+                    # Crop the face
                     face = img[y:y + h, x:x + w]
 
                     # Convert cropped face to grayscale
@@ -32,11 +31,6 @@ def detect_and_crop_faces(input_dir, output_dir):
                     output_path = os.path.join(output_dir, root, f'{filename.split(".")[0]}_face{i}.jpg')
                     os.makedirs(os.path.dirname(output_path), exist_ok=True)
                     cv2.imwrite(output_path, gray_face)
-
-                # Save the image with detected faces
-                output_path = os.path.join(output_dir, root, f'{filename.split(".")[0]}_detected.jpg')
-                os.makedirs(os.path.dirname(output_path), exist_ok=True)
-                cv2.imwrite(output_path, img)
 
 
 input_dir = './train'
