@@ -11,6 +11,6 @@ This repository is specifically created as part of our dataset creation for our 
 3. Run the .py file
 4. Check the "new_ds" folder for the output.
 
-###Limits:
+### Limits:
 - The model detects multiple faces in one image... some aren't even faces. So, I recommend manually cleaning the data to achieve optimal results.
 - If the grayscale conversion produces an error, try downgrading to OpenCV 4.6.0 (which I used for this project)
