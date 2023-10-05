@@ -10,7 +10,14 @@ def detect_and_crop_faces(input_dir, output_dir):
         if filename.endswith('.png') or filename.endswith('.jpg'):
             # Read the image
             img_path = os.path.join(input_dir, filename)
-            img = cv2.imread(img_path)
+            try:
+                img = cv2.imread(img_path)
+                if img is None:
+                    print(f"Error: Could not read image file {img_path}")
+                    continue
+            except Exception as e:
+                print(f"Error: Could not read image file {img_path}: {e}")
+                continue
 
             # Convert to grayscale
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -45,3 +52,4 @@ for dir in os.listdir(input_dir):
     if os.path.isdir(input_subdir):
         os.makedirs(output_subdir, exist_ok=True)
         detect_and_crop_faces(input_subdir, output_subdir)
+        
