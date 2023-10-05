@@ -34,8 +34,8 @@ def detect_and_crop_faces(input_dir, output_dir):
                 cv2.imwrite(output_path, resized_face)
 
 
-input_dir = './train'
-output_dir = './new_ds'
+input_dir = './'+input('Enter the input directory: ')
+output_dir = './'+input('Enter the output directory: ')
 
 for dir in os.listdir(input_dir):
     input_subdir = os.path.join(input_dir, dir)
