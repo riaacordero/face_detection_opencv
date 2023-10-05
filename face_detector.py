@@ -32,6 +32,8 @@ def detect_and_crop_faces(input_dir, output_dir):
                 # Save the cropped face in grayscale
                 output_path = os.path.join(output_dir, f'{filename.split(".")[0]}_face{i}.jpg')
                 cv2.imwrite(output_path, resized_face)
+    
+    print("Completed upload on "+output_dir+" directory. Check the output directory for the cropped faces.")
 
 
 input_dir = './'+input('Enter the input directory: ')
