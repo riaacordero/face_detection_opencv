@@ -46,8 +46,10 @@ def detect_and_crop_faces(input_dir, output_dir):
 input_dir = './'+input('Enter the input directory: ')
 output_dir = './'+input('Enter the output directory: ')
 
-if os.path.isdir(input_dir):
-    os.makedirs(output_dir, exist_ok=True)
-    detect_and_crop_faces(input_dir, output_dir)
-else:
-    print("Error: Input directory does not exist or is not a directory.")
+for dir in os.listdir(input_dir):
+    input_subdir = os.path.join(input_dir, dir)
+    output_subdir = os.path.join(output_dir, dir)
+    if os.path.isdir(input_subdir):
+        os.makedirs(output_subdir, exist_ok=True)
+        detect_and_crop_faces(input_subdir, output_subdir)
+        
